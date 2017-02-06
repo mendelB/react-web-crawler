@@ -7,8 +7,23 @@ class MainForm extends React.Component {
 		this.state = {
 			value: ''	
 		}
+		this.handleChange = this.handleChange.bind(this);
+		this.getValidationState = this.getValidationState.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
+	handleChange(e) {
+		this.setState({value: e.target.value})
+	}
+
+	getValidationState() {
+	    if (this.state.value.length > 0 ) return 'error';
+  	}
+
+  	handleSubmit(e) {
+  		e.preventDefault();
+  		console.log(this.state.value);
+  	}
 
 	render() {
 		return (
@@ -17,12 +32,20 @@ class MainForm extends React.Component {
 					<h2><Label>Input the website you'd like to crawl</Label></h2>
 				</div>
 				<div className="Input">
-					<FormGroup bsSize="large">
-						<FormControl type="text" />
-					</FormGroup>
-					<Button bsSize="large" bsStyle="primary" type="submit">
-						Crawl!
-					</Button>
+					<form onSubmit={this.handleSubmit}>
+						<FormGroup bsSize="large" validationState={this.getValidationState()}>
+							<FormControl 
+								type="text"
+								value={this.state.value}
+								placeholder="e.g. google.com"
+								onChange={this.handleChange} />
+							<FormControl.Feedback />
+								
+						</FormGroup>
+						<Button bsSize="large" bsStyle="primary" type="submit" onClick={this.handleSubmit}>
+							Crawl!
+						</Button>
+					</form>
 				</div>
 			</div>
 		)
