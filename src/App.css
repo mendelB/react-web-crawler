@@ -4,15 +4,38 @@
 
 .App-header {
   background-color: #222;
-  height: 40px;
+  height: 50px;
   padding: 20px;
   color: white;
 }
 
 .App-intro {
-  font-size: large;
+  font-size: 30px;
 }
 
 .Home {
-  padding: 20px;
+  background-repeat:no-repeat;
+  background-size:100%;
+  background-position:fill;
+  background-image: url(../public/background.jpg);
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.MainForm {
+  padding: 10px;
+}
+
+.Input {
+  position: relative;
+  margin: 0 auto;
+  width: 30%;
+  text-align: center;
+}
+
+.Instructions {
+  color: white;
 }
