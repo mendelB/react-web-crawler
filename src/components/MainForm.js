@@ -17,7 +17,9 @@ class MainForm extends React.Component {
 	}
 
 	getValidationState() {
-	    if (this.state.value.length > 0 ) return 'error';
+		if (this.state.value.length <= 0) return null
+		//TODO use a lib to validate input as url
+	    return (this.state.value.match(/((http|https):\/\/www\.)?.+\..+/) ) ? 'success' : 'error';
   	}
 
   	handleSubmit(e) {
