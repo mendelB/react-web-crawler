@@ -5,7 +5,8 @@ class MainForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: ''	
+			value: '',
+			valid: true
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.getValidationState = this.getValidationState.bind(this);
@@ -13,7 +14,7 @@ class MainForm extends React.Component {
 	}
 
 	handleChange(e) {
-		this.setState({value: e.target.value})
+		this.setState({value: e.target.value, valid: (this.getValidationState() === 'success')})
 	}
 
 	getValidationState() {
@@ -44,7 +45,7 @@ class MainForm extends React.Component {
 							<FormControl.Feedback />
 								
 						</FormGroup>
-						<Button bsSize="large" bsStyle="primary" type="submit" onClick={this.handleSubmit}>
+						<Button bsSize="large" bsStyle="primary" type="submit" onClick={this.handleSubmit} disabled={!this.state.valid}>
 							Crawl!
 						</Button>
 					</form>
